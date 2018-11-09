@@ -38,6 +38,12 @@ public class Hamster {
      */
     private HamsterGame game;
 
+   /*@
+     @ public model instance boolean isInitialized;
+     @ private represents isInitialized = (game != null);
+     @ public model instance int grainCount;
+     @ private represents grainCount <- internalHamster.grainCount;
+     @*/
     /**
      * The internal hamster object representing this hamster in the
      * simulator internal model.
