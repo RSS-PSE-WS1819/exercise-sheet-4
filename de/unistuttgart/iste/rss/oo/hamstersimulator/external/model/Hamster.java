@@ -136,8 +136,8 @@ public class Hamster {
      * @throws FrontBlockedException When the tile in front of the hamster is blocked
      */
     public void move() {
-        this.game.processCommandSpecification(
-                new MoveCommandSpecification(this.internalHamster));
+        //this.game.processCommandSpecification(
+        //        new MoveCommandSpecification(this.internalHamster));
     }
 
     /**
