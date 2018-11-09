@@ -42,7 +42,7 @@ public class Hamster {
      @ public model instance boolean isInitialized;
      @ private represents isInitialized = (game != null);
      @ public model instance int grainCount;
-     @ private represents grainCount <- internalHamster.grainCount;
+     @ private represents grainCount <- internalHamster.getGrainCount();
      @*/
     /**
      * The internal hamster object representing this hamster in the
@@ -216,7 +216,7 @@ public class Hamster {
      * @return true if the front of the hamster is clear, i.e., the hamster
      *              could execute a move command successfully.
      */
-    public boolean frontIsClear() {
+    public /*@ pure @*/ boolean frontIsClear() {
         checkState(this.internalHamster.getCurrentTile().isPresent());
         final LocationVector movementVector = this.internalHamster.getDirection().getMovementVector();
         final Tile currentTile = this.internalHamster.getCurrentTile().get();
@@ -234,7 +234,7 @@ public class Hamster {
      * @return true if there are grain objects available on the hamster's current tile,
      *              i.e., a pickGrain command could execute successfully.
      */
-    public boolean grainAvailable() {
+    public /*@ pure @*/ boolean grainAvailable() {
         final Optional<Tile> tile = this.internalHamster.getCurrentTile();
         checkArgument(tile.isPresent());
         return tile.get().getGrainCount() > 0;
@@ -246,7 +246,7 @@ public class Hamster {
      * @return true when there are no grain objects left in the hamster's mouth,
      *              i.e., when a putGrain command can not be executed.
      */
-    public boolean mouthEmpty() {
+    public /*@ pure @*/ boolean mouthEmpty() {
         return this.internalHamster.getGrainInMouth().isEmpty();
     }
 
@@ -254,7 +254,7 @@ public class Hamster {
      * Get the current hamster location.
      * @return The current hamster's location in the territory.
      */
-    public Location getLocation() {
+    public /*@ pure @*/ Location getLocation() {
         return this.internalHamster.getCurrentTile().get().getLocation();
     }
 
@@ -262,7 +262,7 @@ public class Hamster {
      * Get the current hamster looking direction.
      * @return The current hamster's looking direction.
      */
-    public Direction getDirection() {
+    public /*@ pure @*/ Direction getDirection() {
         return this.internalHamster.getDirection();
     }
 
